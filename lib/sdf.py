@@ -20,6 +20,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+#28-9-2024: Todor: updated the deprecated numpy types to int, bool here and in the notebook so it runs without editing today in the Colab example.
 '''
 import numpy as np
 
@@ -90,9 +92,11 @@ def eval_grid_octree(coords, eval_func,
 
     sdf = np.zeros(resolution)
 
-    notprocessed = np.zeros(resolution, dtype=np.bool)
+    #notprocessed = np.zeros(resolution, dtype=np.bool)
+    notprocessed = np.zeros(resolution, dtype=bool)
     notprocessed[:-1,:-1,:-1] = True
-    grid_mask = np.zeros(resolution, dtype=np.bool)
+    #grid_mask = np.zeros(resolution, dtype=np.bool)
+    grid_mask = np.zeros(resolution, dtype=bool)
 
     reso = resolution[0] // init_resolution
 
@@ -149,3 +153,4 @@ def eval_grid_octree(coords, eval_func,
         reso //= 2
 
     return sdf.reshape(resolution)
+
